@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="128dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/groupNameTextView_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".4"
+        android:fontFamily="sans-serif-black"
+        android:gravity="bottom|center_horizontal"
+        android:text="Stuff for Party"
+        android:textSize="32sp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginEnd="128dp"
+        android:layout_weight="0"
+        android:background="#5F5F5F" />
+
+    <TextView
+        android:id="@+id/groupCountTextView_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".6"
+        android:gravity="center_horizontal|top"
+        android:text="Currently 12 items are active"
+        android:textColor="#525252"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/groupRowDividerView_id"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_weight="0"
+        android:background="#03A9F4" />
+</LinearLayout>
