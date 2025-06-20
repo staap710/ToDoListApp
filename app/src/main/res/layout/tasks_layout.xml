@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEB3B"
+    android:background="@drawable/paper"
     tools:context=".TasksActivity">
 
     <Button
@@ -13,18 +13,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#00DEDEDE"
+        android:fontFamily="sans-serif-black"
         android:paddingRight="0dp"
-        android:text="+New Group"
+        android:text="+New Task"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/selectedGroupNameTextView_id"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/selectedGroupNameTextView_id"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.149" />
 
     <TextView
         android:id="@+id/selectedGroupNameTextView_id"
@@ -33,7 +33,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="32dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="TextView"
         android:textSize="24sp"
@@ -43,16 +43,18 @@
 
     <Button
         android:id="@+id/goToGroupsButton_id"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="137dp"
+        android:layout_height="38dp"
         android:backgroundTint="#00FFFFFF"
+        android:fontFamily="sans-serif-black"
         android:paddingLeft="0dp"
-        android:text="Groups"
+        android:text="Back to Groups"
         android:textColor="#000000"
         app:iconTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/selectedGroupNameTextView_id"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/selectedGroupNameTextView_id"
-        app:layout_constraintTop_toTopOf="@+id/selectedGroupNameTextView_id" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecyclerView_id"

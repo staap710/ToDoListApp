@@ -25,7 +25,8 @@
             android:id="@+id/taskCheckBox_id"
             android:layout_width="63dp"
             android:layout_height="match_parent"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            android:textColorLink="#FFEB3B" />
     </LinearLayout>
 
     <View
@@ -35,6 +36,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_weight="0"
-        android:background="#2196F3" />
+        android:background="@color/black" />
 
 </LinearLayout>
