@@ -12,7 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 
 
 class GroupsActivity : AppCompatActivity(), OnGroupClickedListener
@@ -26,10 +27,41 @@ class GroupsActivity : AppCompatActivity(), OnGroupClickedListener
         startActivity(intent)
     }
 
-    override fun onGroupLongClicked(position: Int)
-    {
-        AppData.groups.removeAt(position) // delete it from the source
-        groupsRecyclerView.adapter?.notifyDataSetChanged()
+    override fun onGroupLongClicked(position: Int) {
+        val context = this
+        val group = AppData.groups[position]
+
+        val options = arrayOf("Edit", "Delete")
+
+        AlertDialog.Builder(context)
+            .setTitle("Group Options")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> { // Edit group name
+                        val input = EditText(context)
+                        input.setText(group.name)
+
+                        AlertDialog.Builder(context)
+                            .setTitle("Edit Group Name")
+                            .setView(input)
+                            .setPositiveButton("Save") { _, _ ->
+                                val newName = input.text.toString()
+                                if (newName.isNotBlank()) {
+                                    AppData.groups[position] = Group(newName, group.tasks)
+                                    groupsRecyclerView.adapter?.notifyItemChanged(position)
+                                }
+                            }
+                            .setNegativeButton("Cancel", null)
+                            .show()
+                    }
+
+                    1 -> { // Delete group
+                        AppData.groups.removeAt(position)
+                        groupsRecyclerView.adapter?.notifyItemRemoved(position)
+                    }
+                }
+            }
+            .show()
     }
 
 

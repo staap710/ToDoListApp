@@ -38,7 +38,7 @@ class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter
         return GroupViewHolder (rootLinearLayout)
     }
 
-    // when I am pushing a new group, what data shoudl I put in there
+    // when I am pushing a new group, what data should I put in there
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int)
     {
         val thisGroup = AppData.groups[position]

@@ -111,8 +111,41 @@ class TaskAdapter (val group: Group) : RecyclerView.Adapter<TaskViewHolder>()
 
         // Long click to delete task
         holder.itemView.setOnLongClickListener {
-            group.tasks.removeAt(position)
-            notifyItemRemoved(position)
+            val context = holder.itemView.context
+
+            val options = arrayOf("Edit", "Delete")
+
+            // Show a dialog with options
+            AlertDialog.Builder(context)
+                .setTitle("Task Options")
+                .setItems(options) { _, which ->
+                    when (which) {
+                        0 -> { // Edit option
+                            val editText = EditText(context)
+                            editText.setText(task.name)
+
+                            AlertDialog.Builder(context)
+                                .setTitle("Edit Task")
+                                .setView(editText)
+                                .setPositiveButton("Save") { _, _ ->
+                                    val newName = editText.text.toString()
+                                    if (newName.isNotBlank()) {
+                                        task.name = newName
+                                        notifyItemChanged(position) // Refresh the item
+                                    }
+                                }
+                                .setNegativeButton("Cancel", null)
+                                .show()
+                        }
+
+                        1 -> { // Delete option
+                            group.tasks.removeAt(position)
+                            notifyItemRemoved(position)
+                        }
+                    }
+                }
+                .show()
+
             true
         }
     }
